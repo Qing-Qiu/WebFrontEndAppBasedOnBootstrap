@@ -41,9 +41,14 @@
 
 <div class="container">
     <div class="row">
-        <h2>猜你喜欢</h2>
+        <div class="col-xs-8 text-left">
+            <h2>猜你喜欢</h2>
+        </div>
+        <div class="col-xs-4 text-right">
+            <button class="btn btn-lg" id="change">换一批</button>
+        </div>
     </div>
-    <div class="row">
+    <div class="row" id="guess_u_like">
         <div class="col-sm-4">
             <a href="html/movie/pic7.html"><img src="img/movie/pic7.webp" alt="银河护卫队3" class="img-thumbnail"></a>
         </div>
@@ -60,7 +65,7 @@
     <div class="row">
         <a href="movie.html">>>更多</a>
     </div>
-    <div class="row">
+    <div class="row" id="movie">
         <div class="col-sm-2">
             <a href="html/movie/pic1.html"><img src="img/movie/pic1.webp" class="img-thumbnail"></a>
         </div>
@@ -81,12 +86,20 @@
         </div>
     </div>
     <div class="row">
+        <ul class="pagination">
+            <li><a href="#" onclick="switch2movie1()">&laquo;</a></li>
+            <li><a href="#" onclick="switch2movie1()">1</a></li>
+            <li><a href="#" onclick="switch2movie2()">2</a></li>
+            <li><a href="#" onclick="switch2movie2()">&raquo;</a></li>
+        </ul>
+    </div>
+    <div class="row">
         <h2>热播电视剧</h2>
     </div>
     <div class="row">
         <a href="tv.html">>>更多</a>
     </div>
-    <div class="row">
+    <div class="row" id="tv">
         <div class="col-sm-2">
             <a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" class="img-thumbnail"></a>
         </div>
@@ -105,6 +118,14 @@
         <div class="col-sm-2">
             <a href="html/tv/pic6.html"><img src="img/tv/pic6.webp" class="img-thumbnail"></a>
         </div>
+    </div>
+    <div class="row">
+        <ul class="pagination">
+            <li><a href="#" onclick="switch2tv1()">&laquo;</a></li>
+            <li><a href="#" onclick="switch2tv1()">1</a></li>
+            <li><a href="#" onclick="switch2tv2()">2</a></li>
+            <li><a href="#" onclick="switch2tv2()">&raquo;</a></li>
+        </ul>
     </div>
 </div>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -137,6 +158,154 @@
         localStorage.removeItem("username");
         localStorage.removeItem("password");
         location.reload();
+    }
+</script>
+<script>
+    document.getElementById("change").onclick = function () {
+        a = parseInt(Math.random() * 24) + 1;
+        b = parseInt(Math.random() * 24) + 1;
+        while (b === a) {
+            b = parseInt(Math.random() * 24) + 1;
+        }
+        c = parseInt(Math.random() * 24) + 1;
+        while (c === a || c === b) {
+            c = parseInt(Math.random() * 24) + 1;
+        }
+        if (a > 12) {
+            A = "tv";
+            a -= 12;
+        } else A = "movie";
+        if (b > 12) {
+            B = "tv";
+            b -= 12;
+        } else B = "movie";
+        if (c > 12) {
+            C = "tv";
+            c -= 12;
+        } else C = "movie";
+        document.getElementById("guess_u_like").innerHTML =
+            '<div class="col-sm-4">\n' +
+            '<a href="html/' +
+            A + '/pic' + a +
+            '.html"><img src="img/' + '' +
+            A + '/pic' + a + '.webp"class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-4">\n' +
+            '<a href="html/' +
+            B + '/pic' + b +
+            '.html"><img src="img/' + '' +
+            B + '/pic' + b + '.webp"class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-4">\n' +
+            '<a href="html/' +
+            C + '/pic' + c +
+            '.html"><img src="img/' + '' +
+            C + '/pic' + c + '.webp"class="img-thumbnail"></a>\n' +
+            '</div>\n';
+    }
+
+    function switch2movie1() {
+        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        document.getElementById("movie").innerHTML =
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic1.html"><img src="img/movie/pic1.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic2.html"><img src="img/movie/pic2.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic3.html"><img src="img/movie/pic3.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic4.html"><img src="img/movie/pic4.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic5.html"><img src="img/movie/pic5.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic6.html"><img src="img/movie/pic6.webp" class="img-thumbnail"></a>\n' +
+            '</div>';
+        setTimeout(function () {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
+    }
+
+    function switch2movie2() {
+        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        document.getElementById("movie").innerHTML =
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic7.html"><img src="img/movie/pic7.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic8.html"><img src="img/movie/pic8.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic9.html"><img src="img/movie/pic9.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic10.html"><img src="img/movie/pic10.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic11.html"><img src="img/movie/pic11.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/movie/pic12.html"><img src="img/movie/pic12.webp" class="img-thumbnail"></a>\n' +
+            '</div>';
+        setTimeout(function () {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
+    }
+
+    function switch2tv1() {
+        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        document.getElementById("tv").innerHTML =
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic2.html"><img src="img/tv/pic2.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic3.html"><img src="img/tv/pic3.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic4.html"><img src="img/tv/pic4.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic5.html"><img src="img/tv/pic5.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic6.html"><img src="img/tv/pic6.webp" class="img-thumbnail"></a>\n' +
+            '</div>';
+        setTimeout(function () {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
+    }
+
+    function switch2tv2() {
+        var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        document.getElementById("tv").innerHTML =
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic7.html"><img src="img/tv/pic7.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic8.html"><img src="img/tv/pic8.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic9.html"><img src="img/tv/pic9.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic10.html"><img src="img/tv/pic10.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic11.html"><img src="img/tv/pic11.webp" class="img-thumbnail"></a>\n' +
+            '</div>\n' +
+            '<div class="col-sm-2">\n' +
+            '<a href="html/tv/pic12.html"><img src="img/tv/pic12.webp" class="img-thumbnail"></a>\n' +
+            '</div>';
+        setTimeout(function () {
+            window.scrollTo(0, scrollPosition);
+        }, 0);
     }
 </script>
 </body>

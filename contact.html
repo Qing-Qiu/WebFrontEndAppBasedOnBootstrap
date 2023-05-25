@@ -41,7 +41,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="text-center">联系我们</h2>
-                    <form id="login_in">
+                    <form id="contact_us">
                         <div class="form-group">
                             <label for="email">邮箱：</label>
                             <input type="email" class="form-control" id="email" name="email"
@@ -55,7 +55,7 @@
                             ></textarea>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary" style="width: 50%">提交</button>
+                            <button type="submit" class="btn btn-primary" style="width: 50%" id="contact">提交</button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@
     </footer>
 </div>
 <script type="text/javascript">
-    var form = $('#login_in');
+    var form = $('#contact_us');
     $(document).ready(function () {
         form.bootstrapValidator({
             message: '输入值不合法',
@@ -122,6 +122,12 @@
         localStorage.removeItem("username");
         localStorage.removeItem("password");
         location.reload();
+    }
+</script>
+<script type="text/javascript">
+    document.getElementById("contact").onclick = function () {
+        if ($(form).data("bootstrapValidator").isValid())
+            alert("提交成功！");
     }
 </script>
 </body>
