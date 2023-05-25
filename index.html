@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>门户网站</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #aaa;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="img/meow.jpg" class="navbar-brand img-circle">
+            <a class="navbar-brand" href="#">秋秋影院</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="active"><a href="index.html">主页</a></li>
+                <li><a href="movie.html">电影</a></li>
+                <li><a href="tv.html">电视剧</a></li>
+                <li><a href="contact.html">联系我们</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="login">
+                <li><a href="login.html">登录</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <h2>猜你喜欢</h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="html/movie/pic7.html"><img src="img/movie/pic7.webp" alt="银河护卫队3" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-4">
+            <a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" alt="狂飙" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-4">
+            <a href="html/movie/pic11.html"><img src="img/movie/pic11.webp" alt="流浪地球2" class="img-thumbnail"></a>
+        </div>
+    </div>
+    <div class="row">
+        <h2>电影频道</h2>
+    </div>
+    <div class="row">
+        <a href="movie.html">>>更多</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="html/movie/pic1.html"><img src="img/movie/pic1.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/movie/pic2.html"><img src="img/movie/pic2.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/movie/pic3.html"><img src="img/movie/pic3.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/movie/pic4.html"><img src="img/movie/pic4.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/movie/pic5.html"><img src="img/movie/pic5.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/movie/pic6.html"><img src="img/movie/pic6.webp" class="img-thumbnail"></a>
+        </div>
+    </div>
+    <div class="row">
+        <h2>热播电视剧</h2>
+    </div>
+    <div class="row">
+        <a href="tv.html">>>更多</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/tv/pic2.html"><img src="img/tv/pic2.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/tv/pic3.html"><img src="img/tv/pic3.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/tv/pic4.html"><img src="img/tv/pic4.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/tv/pic5.html"><img src="img/tv/pic5.webp" class="img-thumbnail"></a>
+        </div>
+        <div class="col-sm-2">
+            <a href="html/tv/pic6.html"><img src="img/tv/pic6.webp" class="img-thumbnail"></a>
+        </div>
+    </div>
+</div>
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2023 版权所有</p>
+            <p>技术支持：XXX</p>
+            <p>分享链接：<a href="#">Github</a> | <a href="#">QQ</a> | <a href="#">Wechat</a></p>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        var sName = localStorage.getItem("username");
+        var sPwd = localStorage.getItem("password");
+        if (sName && sPwd) {
+            document.getElementById("login").innerHTML =
+                '<li class="dropdown">\n' +
+                '<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
+                sName +
+                '<span class="caret"></span></a>\n' +
+                '<ul class="dropdown-menu">\n' +
+                '<li><a href="#" onclick="log_out()">登出</a></li>\n' +
+                '</ul>\n' +
+                '</li>'
+        }
+    }
+
+    function log_out() {
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+        location.reload();
+    }
+</script>
+</body>
+</html>
