@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
             </button>
             <img src="img/meow.jpg" class="navbar-brand img-circle">
-            <a class="navbar-brand" href="index.html">秋秋影院</a>
+            <a class="navbar-brand" href="#">秋秋影院</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-left">
@@ -56,13 +56,21 @@
     </div>
     <div class="row" id="guess_u_like">
         <div class="col-sm-4">
-            <a href="html/movie/pic7.html"><img src="img/movie/pic7.webp" alt="银河护卫队3" class="img-thumbnail"></a>
+            <a href="html/movie/pic7.html"><img src="img/movie/pic7.webp" alt="银河护卫队3" class="img-thumbnail"
+                                                id="favor1"
+                                                draggable="true" ondragstart="drag()"
+                                                ondragover="allowDrop()" ondrop="drop()"></a>
         </div>
         <div class="col-sm-4">
-            <a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" alt="狂飙" class="img-thumbnail"></a>
+            <a href="html/tv/pic1.html"><img src="img/tv/pic1.webp" alt="狂飙" class="img-thumbnail" id="favor2"
+                                             draggable="true" ondragstart="drag()"
+                                             ondragover="allowDrop()" ondrop="drop()"></a>
         </div>
         <div class="col-sm-4">
-            <a href="html/movie/pic11.html"><img src="img/movie/pic11.webp" alt="流浪地球2" class="img-thumbnail"></a>
+            <a href="html/movie/pic11.html"><img src="img/movie/pic11.webp" alt="流浪地球2" class="img-thumbnail"
+                                                 id="favor3"
+                                                 draggable="true" ondragstart="drag()"
+                                                 ondragover="allowDrop()" ondrop="drop()"></a>
         </div>
     </div>
     <div class="row">
@@ -194,20 +202,44 @@
             '<a href="html/' +
             A + '/pic' + a +
             '.html"><img src="img/' + '' +
-            A + '/pic' + a + '.webp"class="img-thumbnail"></a>\n' +
+            A + '/pic' + a + '.webp" class="img-thumbnail" id="favor1" draggable="true" ondragstart="drag()"\n' +
+            '                                                ondragover="allowDrop()" ondrop="drop()"></a>\n' +
             '</div>\n' +
             '<div class="col-sm-4">\n' +
             '<a href="html/' +
             B + '/pic' + b +
             '.html"><img src="img/' + '' +
-            B + '/pic' + b + '.webp"class="img-thumbnail"></a>\n' +
+            B + '/pic' + b + '.webp" class="img-thumbnail" id="favor2" draggable="true" ondragstart="drag()"\n' +
+            '                                                ondragover="allowDrop()" ondrop="drop()"></a>\n' +
             '</div>\n' +
             '<div class="col-sm-4">\n' +
             '<a href="html/' +
             C + '/pic' + c +
             '.html"><img src="img/' + '' +
-            C + '/pic' + c + '.webp"class="img-thumbnail"></a>\n' +
+            C + '/pic' + c + '.webp" class="img-thumbnail" id="favor3" draggable="true" ondragstart="drag()"\n' +
+            '                                                ondragover="allowDrop()" ondrop="drop()"></a>\n' +
             '</div>\n';
+    }
+
+    function allowDrop() {
+        event.preventDefault();
+    }
+
+    function drag() {
+        event.dataTransfer.setData("text", event.target.id);
+    }
+
+    function drop() {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var draggedImage = document.getElementById(data);
+        var droppedImage = event.target;
+        var tempSrc = draggedImage.src;
+        var tempAlt = draggedImage.alt;
+        draggedImage.src = droppedImage.src;
+        draggedImage.alt = droppedImage.alt;
+        droppedImage.src = tempSrc;
+        droppedImage.alt = tempAlt;
     }
 
     function switch2movie1() {
@@ -235,6 +267,8 @@
             window.scrollTo(0, scrollPosition);
         }, 0);
     }
+
+    document.getElementsByClassName("favor")
 
     function switch2movie2() {
         var scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
