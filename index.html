@@ -217,16 +217,6 @@
                 '</ul>\n' +
                 '</li>'
         }
-    }
-
-    function log_out() {
-        localStorage.removeItem("username");
-        localStorage.removeItem("password");
-        location.reload();
-    }
-</script>
-<script>
-    window.onload = function () {
         if (document.getElementById("a1") != null) {
             document.getElementById("a1").onmouseover = function () {
                 document.getElementById("badimg").src = "img/ad1.jpg";
@@ -248,6 +238,14 @@
             }
         }
     }
+
+    function log_out() {
+        localStorage.removeItem("username");
+        localStorage.removeItem("password");
+        location.reload();
+    }
+</script>
+<script>
     document.getElementById("change").onclick = function () {
         a = parseInt(Math.random() * 24) + 1;
         b = parseInt(Math.random() * 24) + 1;
@@ -313,6 +311,11 @@
         draggedImage.alt = droppedImage.alt;
         droppedImage.src = tempSrc;
         droppedImage.alt = tempAlt;
+        var draggedLink = draggedImage.parentNode;
+        var droppedLink = droppedImage.parentNode;
+        var tempHref = draggedLink.href;
+        draggedLink.href = droppedLink.href;
+        droppedLink.href = tempHref;
     }
 
     function switch2movie1() {
